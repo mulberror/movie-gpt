@@ -1,2 +1,4 @@
-data/*.csv
+data/comment.csv
+data/movies.csv
+data/relationships.csv
 KEY.py
