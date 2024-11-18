@@ -60,21 +60,22 @@ def update_content(chat_id, content_j: json, respond_j: json):
         cur.close()
 
 
-def ask(content):
-    return '你好'
-
 def chat_ask(chat_id: int, content_s: str):
     try:
         content, respond = chat_content(chat_id)
         content_data = json.loads(content)
         respond_data = json.loads(respond)
         n = len(content_data)
-        ask_content = ""
+        ask_content = "该部分为上文(仅提供背景参考,不需要回答){"
         for _, content in content_data.items():
-            ask_content += content + ','
-        ask_content += content_s
+            ask_content += content + ';'
+        ask_content += "},真正需要回答的问题:{"
+        ask_content += content_s + '},'
+        ask_content += ('要求:每一个条目都要包括一定的信息,字数不要太多,如果只问电影就要包括名称,年份,导演,演员和梗概等;'
+                        '或者只问影人就要包括名称,出生日期,出生地点,作品等')
         print('DEBUG:', ask_content)
-        respond_content = ask(ask_content)
+        import app.ask.model as mod
+        respond_content = mod.ask(ask_content)
 
         content_data[n] = content_s
         respond_data[n] = respond_content
@@ -82,6 +83,7 @@ def chat_ask(chat_id: int, content_s: str):
         sql_input_0 = json.dumps(content_data)
         sql_input_1 = json.dumps(respond_data)
         update_content(chat_id, sql_input_0, sql_input_1)
+        print(respond_content)
 
         return respond_content
     except mysql.MySQLError as e:

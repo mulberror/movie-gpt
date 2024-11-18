@@ -3,5 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/app/keyword_extractor" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pure-admin-thin-main" vcs="Git" />
   </component>
 </project>
