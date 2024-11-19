@@ -1,5 +1,6 @@
 import google.generativeai as genai
 import KEY as conf
+import time
 
 import os
 
@@ -11,5 +12,9 @@ model = genai.GenerativeModel("gemini-1.5-flash")
 
 
 def ask(content):
-    response = model.generate_content(content)
-    return response.text
+    print('DEBUG: ARRIVED ASK MODEL ===================== ')
+    start_time = time.time()
+    # response = model.generate_content(content)
+    end_time = time.time()
+    print('DEBUG: ask took {} seconds'.format(end_time - start_time))
+    return '测试文本'
