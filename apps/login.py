@@ -1,10 +1,10 @@
 import pymysql as mysql
 
-host = 'localhost'
+host = '121.36.229.1'
 port = 3306
 user = 'root'
-password = 'root'
-database = 'movie_system'
+password = '123456'
+database = '121.36.229.1'
 charset = 'utf8mb4'
 
 con = mysql.connect(
